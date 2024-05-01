@@ -13,7 +13,7 @@ if not exist %BIN_DIR% mkdir %BIN_DIR%
 javac -d %BIN_DIR% %TOOLS_DIR%\*.java
 javac -d %BIN_DIR% %INTERFACES_DIR%\*.java
 javac -d %BIN_DIR% %LOGIC_DIR%\*.java
-javac -d %BIN_DIR% %SRC_DIR%\Main.java
+javac -d %BIN_DIR% %SRC_DIR%\*.java
 
 :: Periksa exit code dari Java program
 if %ERRORLEVEL% NEQ 0 (

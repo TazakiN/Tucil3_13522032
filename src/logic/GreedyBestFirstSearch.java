@@ -51,7 +51,6 @@ public class GreedyBestFirstSearch extends BaseClass implements hn {
             } else {
                 List<Node> generatedNodes = generateKata(current);
                 for (Node node : generatedNodes) {
-                    node.setFn(countFn(node));
                     pQueue.add(node);
                 }
             }
