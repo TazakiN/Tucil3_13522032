@@ -5,6 +5,8 @@ import tools.Kamus;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class Main {
 
@@ -26,15 +28,33 @@ public class Main {
         return true;
     }
 
+    public static void printAsciiArt() {
+        try {
+            File file = new File("asciiArt.txt");
+            Scanner scanner = new Scanner(file);
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                System.out.println("\u001B[32m" + line + "\u001B[0m");
+            }
+
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: asciiART.txt");
+        }
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean searchAgain = true;
 
+        printAsciiArt();
+
         while (searchAgain) {
-            System.out.print("Masukkan kata awal: ");
+            System.out.print("\u001B[34mMasukkan kata awal: \u001B[0m");
             String kataAwal = scanner.nextLine().toUpperCase();
 
-            System.out.print("Masukkan kata akhir: ");
+            System.out.print("\u001B[34mMasukkan kata akhir: \u001B[0m");
             String kataAkhir = scanner.nextLine().toUpperCase();
 
             Kamus kamus = null;
@@ -46,11 +66,11 @@ public class Main {
 
             if (validateInput(kataAwal, kataAkhir, kamus)) {
 
-                System.out.println("Pilih algoritma:");
+                System.out.println("\n---- PILIHAN ALGORITMA ----");
                 System.out.println("1. UCS");
                 System.out.println("2. Greedy Best First Search");
                 System.out.println("3. A*");
-                System.out.print("Pilihan: ");
+                System.out.print("\u001B[34mPilihan (masukkan angkanya saja): \u001B[0m");
                 int pilihan = scanner.nextInt();
 
                 System.out.println("Mencari kata dari " + kataAwal + " ke " + kataAkhir + "...");

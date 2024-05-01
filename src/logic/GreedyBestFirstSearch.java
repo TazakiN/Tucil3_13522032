@@ -37,12 +37,13 @@ public class GreedyBestFirstSearch extends BaseClass implements hn {
         boolean isStuckOrFound = false;
         while (!isStuckOrFound) {
             Node current = pQueue.poll();
-            nodeDikunjungi++;
             if (current == null) {
-                System.out.println("\u001B[31mTidak ada kata yang bisa di-generate lagi.\u001B[0m");
+                System.out.println("\u001B[31m\nTidak ada kata yang bisa di-generate lagi.\u001B[0m");
+                System.out.println("\u001B[34mBanyak node yang dikunjungi: \u001B[0m" + nodeDikunjungi);
                 isStuckOrFound = true;
                 break;
             }
+            nodeDikunjungi++;
             pQueue.clear();
             if (current.getWord().equals(kataAkhir)) {
                 displayHasil(current);

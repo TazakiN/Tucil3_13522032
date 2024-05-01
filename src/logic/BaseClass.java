@@ -65,9 +65,9 @@ public abstract class BaseClass {
     }
 
     public void displayHasil(Node node) {
-        System.out.println("\u001B[35m\n ----------- HASIL ----------- \u001B[0m");
-        System.out.println("\u001B[34mJumlah node yang dikunjungi: " + nodeDikunjungi + "\u001B[0m");
-        System.out.println("\u001B[34mJumlah step: " + (node.getCost() - 1) + "\u001B[0m");
+        System.out.println("\u001B[33m\n ----------- HASIL ----------- \u001B[0m");
+        System.out.println("\u001B[35mJumlah node yang dikunjungi: \u001B[0m" + nodeDikunjungi);
+        System.out.println("\u001B[35mJumlah step: \u001B[0m" + (node.getCost() - 1));
         node.printPath();
     }
 
@@ -78,18 +78,23 @@ public abstract class BaseClass {
         Node nodeAwal = new Node(kataAwal, 0, null);
         nodeAwal.setFn(countFn(nodeAwal));
         pQueue.add(nodeAwal);
+        boolean isStuckOrFound = false;
 
-        while (!pQueue.isEmpty()) {
+        while (!isStuckOrFound) {
             Node currentNode = pQueue.poll();
-            nodeDikunjungi++;
 
             if (currentNode == null) {
-                System.out.println("\u001B[31mKata Tidak bisa diubah ke kata lain lagi.\u001B[0m");
+                System.out.println("\u001B[31m\nKata Tidak bisa diubah ke kata lain lagi.\u001B[0m");
+                System.out.println("\u001B[34mBanyak node yang dikunjungi: \u001B[0m" + nodeDikunjungi);
+                isStuckOrFound = true;
                 break;
             }
 
+            nodeDikunjungi++;
+
             if (currentNode.getWord().equals(kataAkhir)) {
                 displayHasil(currentNode);
+                isStuckOrFound = true;
                 break;
             }
 
