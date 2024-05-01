@@ -13,6 +13,7 @@ public abstract class BaseClass {
     protected String kataAkhir;
     protected int panjangKata;
     private Kamus kamus;
+    protected int nodeDikunjungi;
 
     protected NodePriorityQueue pQueue;
 
@@ -21,6 +22,7 @@ public abstract class BaseClass {
         this.kataAkhir = kataAkhir;
         this.panjangKata = kataAwal.length();
         this.kamus = kamus;
+        this.nodeDikunjungi = 0;
         this.pQueue = new NodePriorityQueue();
     }
 
@@ -42,7 +44,6 @@ public abstract class BaseClass {
 
     protected List<Node> generateKata(Node parentNode) {
         List<Node> hasil = new ArrayList<>();
-        // System.out.println("parentNode: " + parentNode.getWord());
         for (int i = 0; i < getPanjangKata(); i++) {
             char[] chars = parentNode.getWord().toCharArray();
             if (chars[i] == kataAkhir.charAt(i)) {
@@ -52,7 +53,6 @@ public abstract class BaseClass {
                 if (c != chars[i]) {
                     chars[i] = c;
                     String kata = new String(chars);
-                    // System.out.println("kata yang bakal dicek: " + kata);
                     if (isKata(kata)) {
                         Node nodeBaru = new Node(kata, 0, parentNode);
                         nodeBaru.setFn(countFn(nodeBaru));
@@ -61,14 +61,12 @@ public abstract class BaseClass {
                 }
             }
         }
-        // System.out.println("hasil: " + hasil);
         return hasil;
     }
 
     public void displayHasil(Node node) {
         System.out.println("\u001B[35m\n ----------- HASIL ----------- \u001B[0m");
-        // System.out.println("\u001B[34mKata ditemukan: " + node.getWord() +
-        // "\u001B[0m");
+        System.out.println("\u001B[34mJumlah node yang dikunjungi: " + nodeDikunjungi + "\u001B[0m");
         System.out.println("\u001B[34mJumlah step: " + (node.getCost() - 1) + "\u001B[0m");
         node.printPath();
     }
@@ -83,6 +81,7 @@ public abstract class BaseClass {
 
         while (!pQueue.isEmpty()) {
             Node currentNode = pQueue.poll();
+            nodeDikunjungi++;
 
             if (currentNode == null) {
                 System.out.println("\u001B[31mKata Tidak bisa diubah ke kata lain lagi.\u001B[0m");

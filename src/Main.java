@@ -28,47 +28,55 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        boolean searchAgain = true;
 
-        System.out.print("Masukkan kata awal: ");
-        String kataAwal = scanner.nextLine().toUpperCase();
+        while (searchAgain) {
+            System.out.print("Masukkan kata awal: ");
+            String kataAwal = scanner.nextLine().toUpperCase();
 
-        System.out.print("Masukkan kata akhir: ");
-        String kataAkhir = scanner.nextLine().toUpperCase();
+            System.out.print("Masukkan kata akhir: ");
+            String kataAkhir = scanner.nextLine().toUpperCase();
 
-        Kamus kamus = null;
-        try {
-            kamus = new Kamus(kataAwal.length());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if (validateInput(kataAwal, kataAkhir, kamus)) {
-
-            System.out.println("Pilih algoritma:");
-            System.out.println("1. UCS");
-            System.out.println("2. Greedy Best First Search");
-            System.out.println("3. A*");
-            System.out.print("Pilihan: ");
-            int pilihan = scanner.nextInt();
-
-            System.out.println("Mencari kata dari " + kataAwal + " ke " + kataAkhir + "...");
-            switch (pilihan) {
-                case 1:
-                    UCS ucs = new UCS(kataAwal, kataAkhir, kamus);
-                    ucs.driver();
-                    break;
-                case 2:
-                    GreedyBestFirstSearch gbfs = new GreedyBestFirstSearch(kataAwal, kataAkhir, kamus);
-                    gbfs.driver();
-                    break;
-                case 3:
-                    AStar aStar = new AStar(kataAwal, kataAkhir, kamus);
-                    aStar.driver();
-                    break;
-                default:
-                    System.out.println("Pilihan metode tidak valid");
-                    break;
+            Kamus kamus = null;
+            try {
+                kamus = new Kamus(kataAwal.length());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+
+            if (validateInput(kataAwal, kataAkhir, kamus)) {
+
+                System.out.println("Pilih algoritma:");
+                System.out.println("1. UCS");
+                System.out.println("2. Greedy Best First Search");
+                System.out.println("3. A*");
+                System.out.print("Pilihan: ");
+                int pilihan = scanner.nextInt();
+
+                System.out.println("Mencari kata dari " + kataAwal + " ke " + kataAkhir + "...");
+                switch (pilihan) {
+                    case 1:
+                        UCS ucs = new UCS(kataAwal, kataAkhir, kamus);
+                        ucs.driver();
+                        break;
+                    case 2:
+                        GreedyBestFirstSearch gbfs = new GreedyBestFirstSearch(kataAwal, kataAkhir, kamus);
+                        gbfs.driver();
+                        break;
+                    case 3:
+                        AStar aStar = new AStar(kataAwal, kataAkhir, kamus);
+                        aStar.driver();
+                        break;
+                    default:
+                        System.out.println("Pilihan metode tidak valid");
+                        break;
+                }
+            }
+
+            System.out.print("Apakah Anda ingin mencari lagi? (Y/N): ");
+            String searchAgainInput = scanner.next();
+            searchAgain = searchAgainInput.equalsIgnoreCase("Y");
+            scanner.nextLine();
         }
 
         scanner.close();
