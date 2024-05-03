@@ -34,7 +34,7 @@ public class Node {
         int count = 0;
         Node current = this;
         while (current != null) {
-            count++;
+            count += 2;
             current = current.getParent();
         }
         return count;

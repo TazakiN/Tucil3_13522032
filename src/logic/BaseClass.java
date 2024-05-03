@@ -1,6 +1,7 @@
 package logic;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import tools.Kamus;
@@ -14,6 +15,7 @@ public abstract class BaseClass {
     protected int panjangKata;
     private Kamus kamus;
     protected int nodeDikunjungi;
+    protected HashSet<String> visited;
 
     protected NodePriorityQueue pQueue;
 
@@ -24,6 +26,7 @@ public abstract class BaseClass {
         this.kamus = kamus;
         this.nodeDikunjungi = 0;
         this.pQueue = new NodePriorityQueue();
+        this.visited = new HashSet<>();
     }
 
     public String getKataAwal() {
@@ -53,10 +56,11 @@ public abstract class BaseClass {
                 if (c != chars[i]) {
                     chars[i] = c;
                     String kata = new String(chars);
-                    if (isKata(kata)) {
+                    if (isKata(kata) && !visited.contains(kata)) {
                         Node nodeBaru = new Node(kata, 0, parentNode);
                         nodeBaru.setFn(countFn(nodeBaru));
                         hasil.add(nodeBaru);
+                        visited.add(kata);
                     }
                 }
             }
@@ -67,7 +71,7 @@ public abstract class BaseClass {
     public void displayHasil(Node node) {
         System.out.println("\u001B[33m\n ----------- HASIL ----------- \u001B[0m");
         System.out.println("\u001B[35mJumlah node yang dikunjungi: \u001B[0m" + nodeDikunjungi);
-        System.out.println("\u001B[35mJumlah step: \u001B[0m" + (node.getCost() - 1));
+        System.out.println("\u001B[35mJumlah step: \u001B[0m" + ((int) (node.getCost() / 2) - 1));
         node.printPath();
     }
 

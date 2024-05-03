@@ -51,7 +51,11 @@ public class GreedyBestFirstSearch extends BaseClass implements hn {
             } else {
                 List<Node> generatedNodes = generateKata(current);
                 for (Node node : generatedNodes) {
+                    if (visited.contains(node.getWord())) {
+                        continue;
+                    }
                     pQueue.add(node);
+                    visited.add(node.getWord());
                 }
             }
         }

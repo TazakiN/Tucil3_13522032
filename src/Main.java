@@ -73,14 +73,16 @@ public class Main {
                 System.out.print("\u001B[34mPilihan (masukkan angkanya saja): \u001B[0m");
                 int pilihan = scanner.nextInt();
 
-                System.out.println("Mencari kata dari " + kataAwal + " ke " + kataAkhir + "...");
+                System.out.println("Mencari kata dari " + kataAwal + " ke " + kataAkhir +
+                        "...");
                 switch (pilihan) {
                     case 1:
                         UCS ucs = new UCS(kataAwal, kataAkhir, kamus);
                         ucs.driver();
                         break;
                     case 2:
-                        GreedyBestFirstSearch gbfs = new GreedyBestFirstSearch(kataAwal, kataAkhir, kamus);
+                        GreedyBestFirstSearch gbfs = new GreedyBestFirstSearch(kataAwal, kataAkhir,
+                                kamus);
                         gbfs.driver();
                         break;
                     case 3:
@@ -93,7 +95,7 @@ public class Main {
                 }
             }
 
-            System.out.print("Apakah Anda ingin mencari lagi? (Y/N): ");
+            System.out.print("\nApakah Anda ingin mencari lagi? (Y/N): ");
             String searchAgainInput = scanner.next();
             searchAgain = searchAgainInput.equalsIgnoreCase("Y");
             scanner.nextLine();
