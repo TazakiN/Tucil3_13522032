@@ -1,0 +1,88 @@
+/* Style Dasar */
+.root {
+  -fx-background-color: #121212;
+  -fx-font-family: "Arial", sans-serif;
+}
+
+/* Label Utama */
+.label {
+  -fx-text-fill: #90ee90;
+  -fx-font-size: 14px;
+}
+
+/* Label Utama Judul */
+.title-label {
+  -fx-text-align: center;
+  -fx-font-size: 22px;
+  -fx-font-weight: 700;
+  -fx-color: #202020;
+  -fx-text-transform: uppercase;
+  -fx-word-spacing: 1px;
+  -fx-letter-spacing: 2px;
+}
+
+/* Kotak Teks */
+.text-field {
+  -fx-background-color: #202020; /* Warna abu-abu gelap untuk latar belakang */
+  -fx-text-fill: white;
+  -fx-border-color: #90ee90; /* Warna hijau untuk tepi */
+}
+
+/* ComboBox */
+.combo-box {
+  -fx-background-color: #202020;
+  -fx-text-fill: white;
+  -fx-border-color: #90ee90;
+}
+.combo-box .list-cell {
+  /* Warna item dalam list ComboBox */
+  -fx-text-fill: white;
+  -fx-background-color: #121212;
+}
+
+/* Tombol */
+.button {
+  -fx-background-color: #90ee90; /* Warna utama hijau */
+  -fx-border-color: #121212; /* Hitam untuk tepi */
+  -fx-text-fill: #121212; /* Teks warna hitam */
+  -fx-font-weight: bold;
+}
+.button:hover {
+  -fx-background-color: #689e68; /* Warna hijau yang sedikit lebih gelap saat di-hover */
+}
+
+/* Label Informasi*/
+.info-label {
+  -fx-text-fill: lightgray;
+}
+
+/* Bagian solusi jalur */
+.solution-area {
+  /*-fx-background-color: #202020;*/
+  /*-fx-border-color: #90ee90;*/
+  /*-fx-padding: 10px;*/
+}
+
+/* HBox Input Field */
+.input-hbox {
+  /* -fx-border: 2px solid #90ee90; Batas hijau */
+  -fx-border-radius: 5px; /* Sudut membulat */
+}
+
+.input-hbox .label {
+  /* Judul di dalam HBox */
+  -fx-font-weight: bold; /* Teks yang lebih tebal */
+}
+
+/* HBox Bawah */
+.bottom-hbox {
+  -fx-border-width: 2px;
+  -fx-border-style: solid;
+  -fx-border-color: #90ee90; /* Batas hijau */
+  -fx-border-radius: 5px; /* Sudut membulat */
+}
+
+.bottom-hbox .label {
+  /* Judul di dalam HBox */
+  -fx-font-weight: bold; /* Teks yang lebih tebal */
+}
