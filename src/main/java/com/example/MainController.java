@@ -82,7 +82,7 @@ public class MainController {
             alert.showAndWait();
             return;
         }
-
+        long beforeUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         long startTime = System.currentTimeMillis();
         switch (algoritma) {
             case "A*":
@@ -110,6 +110,10 @@ public class MainController {
                 break;
         }
         long endTime = System.currentTimeMillis();
+
+        long afterUsedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+
+        System.out.println("Memory used: " + (afterUsedMem - beforeUsedMem) / 1048576 + " MB");
 
         long executionTime = endTime - startTime;
         timeLabel.setText(String.valueOf(executionTime) + " ms");
