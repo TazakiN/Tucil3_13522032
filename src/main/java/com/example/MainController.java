@@ -111,6 +111,9 @@ public class MainController {
         }
         long endTime = System.currentTimeMillis();
 
+        long executionTime = endTime - startTime;
+        timeLabel.setText(String.valueOf(executionTime) + " ms");
+
         if (pathHasil.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -128,8 +131,6 @@ public class MainController {
 
         pathText.setText(path.toString());
 
-        long executionTime = endTime - startTime;
-        timeLabel.setText(String.valueOf(executionTime) + " ms");
     }
 
     private void reset() {
