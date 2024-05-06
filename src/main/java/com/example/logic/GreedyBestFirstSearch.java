@@ -41,6 +41,7 @@ public class GreedyBestFirstSearch extends BaseClass implements hn {
                 isStuckOrFound = true;
                 break;
             }
+            visited.add(current.getWord());
             nodeDikunjungi++;
             pQueue.clear();
             if (current.getWord().equals(kataAkhir)) {
@@ -53,9 +54,7 @@ public class GreedyBestFirstSearch extends BaseClass implements hn {
                         continue;
                     }
                     pQueue.add(node);
-                    visited.add(node.getWord());
                 }
-                // pQueue.printQueue();
             }
         }
     }
